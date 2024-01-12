@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Books</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="{{ url_for('static', filename='all_books_style.css') }}"></link>
+</head>
+<body>
+<div class="container">
+    <div class="d-flex justify-content-between align-items-center mb-3 px-5">
+        <h1 class="text-center px-5"> Welcome To Barney's Books </h1>
+        <div>
+            <button class="btn btn-outline-danger" onclick="window.location.href='/logout'">Logout</button>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    
+    <div class="row">
+        <!-- Example book cards, replace with dynamic content from your dataset -->
+        {% for book in entries %}
+        <div class="col-md-3 my-2">
+            <div class="card book-card p-2 h-100" id="{{ book[0] }}" onclick="window.location.href = '/book?id='+{{book[0]}};">
+                <img src="{{ url_for('static', filename='no_image.png') }}" class="card-img-top" alt="No Image">
+                <div class="card-body">
+                    <h5 class="card-title">{{ book[1] }}</h5>
+                    <p class="card-text"><small class="text-muted">{{ book[2] }}</small></p>
+                    <p class="card-text"><small class="text-muted">{{ book[3] }}</small></p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- Bootstrap JS and dependencies (jQuery) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
+    

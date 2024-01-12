@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Details</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        .book-details-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .book-details {
+            margin-bottom: 30px;
+        }
+        .book-recommendations {
+            margin-top: 30px;
+        }
+        .book-card {
+            width: 18rem;
+            margin: 10px;
+        }
+        .card-img-top {
+            height: 50%; /* Adjusted height to half of the page height */
+            object-fit: cover;
+        }
+        .card-title {
+            font-size: 1.5rem; /* Increased font size */
+            font-weight: bold; /* Added bold style */
+        }
+        .card-text {
+            font-size: 1.2rem; /* Increased font size */
+        }
+    </style>
+</head>
+<body>
+
+<div class="book-details-container">
+    <div class="d-flex justify-content-between align-items-center mb-3 px-5">
+        <h1 class="text-center px-5"> Welcome To Barney's Books </h1>
+        <div>
+            <button class="btn btn-outline-danger" onclick="window.location.href='/logout'">Logout</button>
+        </div>
+    </div>
+    <div class="book-details">
+        <!-- Example book details, replace with dynamic content from your database -->
+        <h2 class="text-center">{{ book[0][1] }}</h2>
+        <div class="h-100 d-flex justify-content-center">
+            <img src="{{ url_for('static', filename='no_image.png') }}" class="img-fluid" alt="No Image" style="max-height: 50vh;">
+        </div>
+        <h5><strong> Genre: &nbsp; </strong> {{ book[0][2] }}</h5>
+        <h5><strong> Author: &nbsp; </strong> {{ book[0][3] }}</h5>
+        <h5><strong> Description: &nbsp; </strong>   {{ book[0][4] }}</h5>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="book-recommendations">
+        
+        <h3 class="text-center mb-4">Other Books in the Same Genre</h3>
+
+        <div class="row">
+            {% for recommendation in entries %}
+            <div class="col-md-3">
+                <div class="card book-card" id="{{ recommendation[0] }}" onclick="window.location.href = '/book?id='+{{recommendation[0]}};">
+                    <img src="{{ url_for('static', filename='no_image.png') }}" class="card-img-top" alt="No Image">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ recommendation[1] }}</h5>
+                        <p class="card-text"><small class="text-muted">{{ recommendation[2] }}</small></p>
+                        <p class="card-text"><small class="text-muted">{{ recommendation[3] }}</small></p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS and dependencies (jQuery) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

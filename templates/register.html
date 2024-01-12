@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Page</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .register-form {
+            width: 300px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="register-form">
+    <h2 class="text-center mb-4">Register</h2>
+    {% if msg %}
+    <h3 class="text-danger">{{ msg }}</h3>
+    {% else %}
+        <p></p>
+    {% endif %}
+    <form action="/register_submit" method="post">
+        <div class="form-group">
+            <label for="first_name">First Name:</label>
+            <input type="text" class="form-control" id="first" name="first" required>
+        </div>
+        <div class="form-group">
+            <label for="last_name">Last Name:</label>
+            <input type="text" class="form-control" id="last" name="last" required>
+        </div>
+        <div class="form-group">
+            <label for="genreDrawer">Genre You Prefer:</label>
+            <select class="form-control" id="genreDrawer" name="genre">
+                <option value="Fiction">Fiction</option>
+                <option value="Mystery">Mystery</option>
+                <option value="Fantasy">Fantasy</option>
+                <option value="Romance">Romance</option>
+                <option value="Horror">Horror</option>
+                <option value="Adventure">Adventure</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="authorsDrawer">Authors You Prefer:</label>
+            <select class="form-control" id="authorsDrawer" name="author">
+                <option value="F. Scott Fitzgerald">F. Scott Fitzgerald</option>
+                <option value="Harper Lee">Harper Lee</option>
+                <option value="George Orwell">George Orwell</option>
+                <option value="J.R.R. Tolkien">J.R.R. Tolkien</option>
+                <option value="Dan Brown">Dan Brown</option>
+                <option value="J.K. Rowling">J.K. Rowling</option>
+                <option value="Suzanne Collins">Suzanne Collins</option>
+                <option value="Stephen King">Stephen King</option>
+                <option value="Oscar Wilde">Oscar Wilde</option>
+                <option value="Herman Melville">Herman Melville</option> 
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" class="form-control" id="password" name="password" required>
+        </div>
+        <div class="form-group">
+            <label for="con_password">Confirm Password:</label>
+            <input type="password" class="form-control" id="con_password" name="con_password" required>
+            <br/>
+            <a href="/login">Already have an Account, Then Login</a>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Register</button>
+    </form>
+</div>
+
+<!-- Bootstrap JS and dependencies (jQuery) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
